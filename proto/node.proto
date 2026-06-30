@@ -1,0 +1,25 @@
+// proto/node.proto
+syntax = "proto3";
+
+package drone;
+
+// single message
+message NodeMessage {
+    string sender_id = 1;
+    string receiver_id = 2;
+    string message_type = 3; // "VOTE", "PREPARE", "LOG_ENTRY", "PING", etc.
+
+    bytes payload = 4;
+    uint64 timestamp = 5;
+
+}
+
+message Ack {
+    bool success = 1;
+    string error_message = 2;
+}
+
+service NodeService {
+    // Each node calls this on another node to deliver a message
+    rpc DeliverMessage (NodeMessage) returns (Ack);
+}

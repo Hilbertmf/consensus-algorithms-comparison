@@ -1,6 +1,6 @@
 #pragma once
 #include "messaging_interface.hpp"
-#include "drone.grpc.pb.h"
+#include "node.grpc.pb.h"
 #include <grpcpp/grpcpp.h>
 #include <memory>
 #include <unordered_map>
@@ -45,7 +45,7 @@ private:
     std::atomic<bool> running_(false);
 
     // Peer mapping: id -> grpc::Channel (or stub)
-    std::unordered_map<std::string, std::unique_ptr<drone::DroneService::Stub>> peer_stubs_;
+    std::unordered_map<std::string, std::unique_ptr<node::NodeService::Stub>> peer_stubs_;
     std::unordered_map<std::string, std::string> peer_addresses_;
     mutable std::mutex peer_mutex_;
 };

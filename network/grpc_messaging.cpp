@@ -5,9 +5,8 @@
 #include <iostream>
 #include <chrono>
 
-namespace dode_consensus {
+namespace node_consensus {
 
-// ---- DodeServiceImpl ----
 GrpcMessaging::NodeServiceImpl::NodeServiceImpl(std::function<void(const Message&)> callback)
     : on_receive_callback(std::move(callback)) {}
 
@@ -31,7 +30,6 @@ grpc::Status GrpcMessaging::NodeServiceImpl::DeliverMessage(grpc::ServerContext*
     return grpc::Status::OK;
 }
 
-// ---- GrpcMessaging ----
 GrpcMessaging::GrpcMessaging(const std::string& own_id, int port)
     : own_id_(own_id), port_(port) {}
 
@@ -145,4 +143,4 @@ std::string GrpcMessaging::getOwnId() const {
     return own_id_;
 }
 
-} // namespace dode_consensus
+}

@@ -143,4 +143,13 @@ std::string GrpcMessaging::getOwnId() const {
     return own_id_;
 }
 
+std::vector<std::string> GrpcMessaging::getPeerIds() const {
+    std::lock_guard<std::mutex> lock(peer_mutex_);
+    std::vector<std::string> ids;
+    for (const auto& [id, _] : peer_addresses_) {
+        if (id != own_id_) ids.push_back(id);
+    }
+    return ids;
+}
+
 }

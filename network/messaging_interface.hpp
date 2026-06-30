@@ -31,4 +31,6 @@ public:
 
     // called during topology setup
     virtual void registerPeer(const std::string& id, const std::string& address) = 0;
+
+    virtual std::vector<std::string> getPeerIds() const = 0;
 }

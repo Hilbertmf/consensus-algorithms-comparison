@@ -48,7 +48,7 @@ This project implements and evaluates distributed consensus algorithms for elect
 ## Running the Project
 1. Install Mininet and dependencies.
 2. Compile the C++ executables.
-3. Launch a Mininet topology and run the drone binaries on each virtual node.
+3. Launch a Mininet topology and run the node binaries on each virtual node.
 4. Introduce failures (via Mininet’s link manipulation or process killing) and observe consensus.
 
 ## Project structure:
@@ -56,7 +56,7 @@ This project implements and evaluates distributed consensus algorithms for elect
 /project_root
 ├── CMakeLists.txt                (Root build file)
 ├── /proto
-│   └── drone.proto               (Message & service definitions)
+│   └── node.proto               (Message & service definitions)
 ├── /network
 │   ├── messaging_interface.hpp   (Abstract interface)
 │   ├── grpc_messaging.hpp        (gRPC implementation header)

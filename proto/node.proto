@@ -1,7 +1,7 @@
 // proto/node.proto
 syntax = "proto3";
 
-package drone;
+package node;
 
 // single message
 message NodeMessage {

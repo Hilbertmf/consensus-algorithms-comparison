@@ -15,6 +15,11 @@ int main(int argc, char** argv) {
     std::string own_id = argv[1];
     int port = std::stoi(argv[2]);
 
+    auto messaging = std::make_shared<node_consensus::GrpcMessaging>("node-1", 50051);
+    // Register peers (you'll do this in Mininet)
+    messaging->registerPeer("node-2", "10.0.0.2:50051");
+    messaging->registerPeer("node-3", "10.0.0.3:50051");
+
     GrpcMessaging node(own_id, port);
 
     // Register peers (passed as pairs: id address)
@@ -46,6 +51,12 @@ int main(int argc, char** argv) {
         // Also test broadcast
         node.broadcast(test_msg);
     }
+
+    node_consensus::RaftNode raft("node-1", messaging);
+    raft.start();
+
+    // Propose a command (if leader)
+    raft.propose("SET_VALUE 42");
 
     // Keep running
     std::this_thread::sleep_for(std::chrono::seconds(10));

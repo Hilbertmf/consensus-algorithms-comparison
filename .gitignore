@@ -1,0 +1,50 @@
+# Compiled object files
+*.o
+*.obj
+
+# Executable files
+*.exe
+*.out
+*.bin
+*.app
+
+# C++ build directories
+/build/
+cmake-build-*/
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Mininet temporary files (if any)
+*.pyc
+__pycache__/
+mininet.log
+
+# gRPC generated files
+*_grpc.pb.cc
+*_grpc.pb.h
+*_pb.cc
+*_pb.h
+
+# gRPC build artifacts
+.grpc/
+.vscode/
+.idea/
+
+# IDE files
+*.swp
+*.swo
+*.bak
+*.tmp
+*.~*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
